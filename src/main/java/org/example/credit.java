@@ -21,12 +21,21 @@ public class credit implements Cloneable {
             System.out.println("OOPS! Credit card number doesn't match");
         }
     }
-    protected Object Clone() throws  CloneNotSupportedException
+    credit cr()
     {
-        return super.clone();
+        try
+        {
+            return (credit) super.clone();
+        }
+        catch(CloneNotSupportedException e)
+        {
+            System.out.println("cloned error");
+            return this;
+        }
     }
 
-    public static void main(String[] args) throws CloneNotSupportedException{
+    public static void main(String[] args)
+    {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter the credit card holder name:");
         String cname = sc.next();
@@ -35,7 +44,7 @@ public class credit implements Cloneable {
         System.out.println("Enter the expiration date:");
         Integer expdate = sc.nextInt();
         credit c1=new credit(cname,cno,expdate);
-        credit c2=(credit)c1.clone();
+        credit c2= c1.cr();
         c2.eq();
     }
 }
