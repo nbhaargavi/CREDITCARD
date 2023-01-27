@@ -1,6 +1,6 @@
 package org.example;
 import java.util.Scanner;
-public class credit implements Cloneable {
+public class credit implements cloneable {
     private String cname;
     private Integer cno;
     private Integer cnum = 501005463;
