@@ -3,7 +3,7 @@ import java.util.Scanner;
 import java.util.logging.*;
 import java.util.logging.Logger;
 
-public class Credit implements Cloneable {
+public class Credit implements cloneable {
     Logger l=Logger.getLogger("kitty");
     private String cname;
     private Integer cno;
