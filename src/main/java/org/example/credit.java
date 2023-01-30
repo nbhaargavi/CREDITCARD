@@ -1,12 +1,16 @@
 package org.example;
 import java.util.Scanner;
-public class credit implements cloneable {
+import java.util.logging.*;
+import java.util.logging.Logger;
+
+public class Credit implements Cloneable {
+    Logger l=Logger.getLogger("kitty");
     private String cname;
     private Integer cno;
     private Integer cnum = 501005463;
     private Integer expdate;
 
-    public credit( String cname,Integer cno, Integer expdate) {
+    public Credit( String cname,Integer cno, Integer expdate) {
         this.cname=cname;
         this.cno=cno;
         this.expdate=expdate;
@@ -14,37 +18,38 @@ public class credit implements cloneable {
     void eq()
     {
         if(cnum.equals(cno)) {
-            System.out.println("Credit card number matched!");
+            l.info("Credit card number matched!");
         }
         else
         {
-            System.out.println("OOPS! Credit card number doesn't match");
+            l.info("OOPS! Credit card number doesn't match");
         }
     }
-    credit cr()
+    Credit cr()
     {
         try
         {
-            return (credit) super.clone();
+            return (Credit) super.clone();
         }
         catch(CloneNotSupportedException e)
         {
-            System.out.println("cloned error");
+            l.info("cloned error");
             return this;
         }
     }
 
     public static void main(String[] args)
     {
+        Logger l=Logger.getLogger("kitty");
         Scanner sc=new Scanner(System.in);
-        System.out.println("Enter the credit card holder name:");
+        l.info("Enter the credit card holder name:");
         String cname = sc.next();
-        System.out.println("Enter the credit card number:");
+        l.info("Enter the credit card number:");
         Integer cno = sc.nextInt();
-        System.out.println("Enter the expiration date:");
+        l.info("Enter the expiration date:");
         Integer expdate = sc.nextInt();
-        credit c1=new credit(cname,cno,expdate);
-        credit c2= c1.cr();
+        Credit c1=new Credit(cname,cno,expdate);
+        Credit c2 = c1.cr();
         c2.eq();
     }
 }
